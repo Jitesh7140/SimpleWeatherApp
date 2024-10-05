@@ -147,6 +147,7 @@ $(document).ready(function(){
 
             $("#textdata").keydown((event) => {
                 if (event.keyCode ===13) {
+                    console.log("enter a key")
                     let txtdata = $("#textdata").val();
                     let xhr = new XMLHttpRequest()
                     xhr.open("GET", `https://api.openweathermap.org/data/2.5/weather?q=${txtdata}&appid=ab77c20dce14f1b5b13220ba4a1cf9e1&units=metric`, true)
