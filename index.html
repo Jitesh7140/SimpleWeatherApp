@@ -118,7 +118,7 @@
 
 
     <div class="cantainer ">
-        <input type="text" class="form-control" placeholder="Search City" id="textdata">
+        <input type="text" autocomplete="off" class="form-control" placeholder="Search City" id="textdata">
 
         <div class="weather-header">
             <h1 class="city-name  ">City</h1>
@@ -143,10 +143,10 @@
     <script>
 
 $(document).ready(function(){
-        // $(document).ready = () => {
+       
 
             $("#textdata").keydown((event) => {
-                if (event.key == "Enter") {
+                if (event.keyCode ===13) {
                     let txtdata = $("#textdata").val();
                     let xhr = new XMLHttpRequest()
                     xhr.open("GET", `https://api.openweathermap.org/data/2.5/weather?q=${txtdata}&appid=ab77c20dce14f1b5b13220ba4a1cf9e1&units=metric`, true)
@@ -180,7 +180,7 @@ $(document).ready(function(){
 
             })
 
-        // }
+       
     });
 
     </script>
