@@ -83,7 +83,8 @@
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to bottom, #87CEFA, #ffffff);
         }
-        .space{
+
+        .space {
             width: 50px;
             height: 100%;
         }
@@ -117,8 +118,7 @@
 
 
     <div class="cantainer ">
-        <input type="text"  class="form-control" placeholder="Search City"
-            id="textdata">
+        <input type="text" class="form-control" placeholder="Search City" id="textdata">
 
         <div class="weather-header">
             <h1 class="city-name  ">City</h1>
@@ -141,66 +141,47 @@
 
     <script src="jquery.js"></script>
     <script>
-        // $(".btn").click(function () {
-        //     let txtdata = $("#textdata").val();
-        //     let xhr = new XMLHttpRequest()
-        //     xhr.open("GET", `https://api.openweathermap.org/data/2.5/weather?q=${txtdata}&appid=ab77c20dce14f1b5b13220ba4a1cf9e1&units=metric`, true)
-        //     xhr.onreadystatechange = function () {
-        //         let weatherdata = JSON.parse(xhr.response)
 
-        //         if (this.readyState == 4 && this.status == 200) {
-        //             let weatherdata = JSON.parse(xhr.response)
-        //             let Humidity = $("#Humidity").text(weatherdata.main.humidity + "%")
-        //             let presser = $("#presser").text(weatherdata.main.pressure + "mb")
-        //             let temp = $("#temp").text(Math.round(weatherdata.main.temp) + "°C")
-        //             let air = $("#air").text(Math.round(weatherdata.wind.speed) + "Km/h")
-        //             $("#textdata").val("")
-        //         }
-        //         if (weatherdata.cod != 200) {
+$(document).ready(function(){
+        // $(document).ready = () => {
 
-        //             console.log("invalid weather")
+            $("#textdata").keydown((event) => {
+                if (event.key == "Enter") {
+                    let txtdata = $("#textdata").val();
+                    let xhr = new XMLHttpRequest()
+                    xhr.open("GET", `https://api.openweathermap.org/data/2.5/weather?q=${txtdata}&appid=ab77c20dce14f1b5b13220ba4a1cf9e1&units=metric`, true)
+                    xhr.onreadystatechange = function () {
 
-        //         }
-        //     }
-        //     xhr.send()
-        // });
-
-        $("#textdata").keydown((event) => {
-            if (event.key == "Enter") {
-                let txtdata = $("#textdata").val();
-                let xhr = new XMLHttpRequest()
-                xhr.open("GET", `https://api.openweathermap.org/data/2.5/weather?q=${txtdata}&appid=ab77c20dce14f1b5b13220ba4a1cf9e1&units=metric`, true)
-                xhr.onreadystatechange = function () {
-                    
-                    if (this.readyState == 4 && this.status == 200) {
-                        let weatherdata = JSON.parse(xhr.response)
-
-                        
-                        let date = new Date()
-                        // console.log(date.toDateString())
+                        if (this.readyState == 4 && this.status == 200) {
+                            let weatherdata = JSON.parse(xhr.response)
 
 
-                        let date1 = $(".date").text(date.toDateString())
-                        let cityname = $(".city-name").text(weatherdata.name)
-                        let Humidity = $("#Humidity").text(weatherdata.main.humidity + "%")
-                        let presser = $("#presser").text(weatherdata.main.pressure + "mb")
-                        let temp = $("#temp").text(Math.round(weatherdata.main.temp) + "°C")
-                        let air = $("#air").text(Math.round(weatherdata.wind.speed) + "Km/h")
-                        // console.log(weatherdata)
-                        $("#textdata").val("")
+                            let date = new Date()
+                            // console.log(date.toDateString())
+
+
+                            let date1 = $(".date").text(date.toDateString())
+                            let cityname = $(".city-name").text(weatherdata.name)
+                            let Humidity = $("#Humidity").text(weatherdata.main.humidity + "%")
+                            let presser = $("#presser").text(weatherdata.main.pressure + "mb")
+                            let temp = $("#temp").text(Math.round(weatherdata.main.temp) + "°C")
+                            let air = $("#air").text(Math.round(weatherdata.wind.speed) + "Km/h")
+                            // console.log(weatherdata)
+                            $("#textdata").val("")
+
+                        }
+
+
 
                     }
-                    
-
+                    xhr.send()
 
                 }
-                xhr.send()
 
-            }
+            })
 
-        })
-
-
+        // }
+    });
 
     </script>
 </body>
